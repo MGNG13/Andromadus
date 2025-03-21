@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente de Productividad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --cursor-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='20' fill='none' viewBox='0 0 24 26'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.69 2.69a2.357 2.357 0 0 1 2.495-.54L21.47 8.632a2.357 2.357 0 0 1-.255 4.494l-7.271 1.818-1.818 7.27a2.357 2.357 0 0 1-4.494.256L1.15 5.185a2.357 2.357 0 0 1 .54-2.495Z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.633 3.622A.786.786 0 0 0 2.62 4.633L9.103 21.92a.786.786 0 0 0 1.498-.086l2.047-8.185 8.185-2.046a.785.785 0 0 0 .086-1.498L3.633 3.622Z' fill='%23010101'/%3E%3C/svg%3E"), auto;
+            --cursor-pointer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='17' fill='none' viewBox='0 0 28 29'%3E%3Cpath fill='%23fff' d='M6.84 21.83c-.47-.6-1.05-1.82-2.07-3.34-.58-.83-2.01-2.41-2.45-3.23a2.1 2.1 0 0 1-.25-1.67 2.2 2.2 0 0 1 2.39-1.67c.85.18 1.63.6 2.25 1.2.43.41.82.85 1.18 1.32.27.34.33.47.63.85.3.39.5.77.35.2-.11-.83-.31-2.23-.6-3.48-.21-.95-.26-1.1-.46-1.82s-.32-1.32-.54-2.13c-.2-.8-.35-1.62-.46-2.44a4.7 4.7 0 0 1 .43-3.08c.58-.55 1.44-.7 2.17-.37a4.4 4.4 0 0 1 1.57 2.17c.43 1.07.72 2.19.86 3.33.27 1.67.79 4.1.8 4.6 0-.61-.11-1.91 0-2.5.12-.6.54-1.1 1.12-1.33.5-.15 1.02-.19 1.53-.1.52.1.98.4 1.29.83.38.98.6 2 .63 3.05.04-.91.2-1.82.47-2.7.28-.39.68-.67 1.15-.8.55-.1 1.11-.1 1.66 0 .46.15.85.44 1.14.82.35.88.56 1.82.63 2.77 0 .23.12-.65.48-1.24a1.67 1.67 0 1 1 3.17 1.07v3.77c-.06.97-.2 1.94-.4 2.9-.29.85-.7 1.65-1.2 2.38-.8.9-1.48 1.92-1.98 3.02a6.67 6.67 0 0 0 .03 3.2c-.68.07-1.37.07-2.05 0-.65-.1-1.45-1.4-1.67-1.8a.63.63 0 0 0-1.13 0c-.37.64-1.18 1.79-1.75 1.85-1.12.14-3.42 0-5.23 0 0 0 .3-1.66-.39-2.27-.68-.6-1.38-1.3-1.9-1.76l-1.4-1.6Z'/%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.25' d='M6.84 21.83c-.47-.6-1.05-1.82-2.07-3.34-.58-.83-2.01-2.41-2.45-3.23a2.1 2.1 0 0 1-.25-1.67 2.2 2.2 0 0 1 2.39-1.67c.85.18 1.63.6 2.25 1.2.43.41.82.85 1.18 1.32.27.34.33.47.63.85.3.39.5.77.35.2-.11-.83-.31-2.23-.6-3.48-.21-.95-.26-1.1-.46-1.82s-.32-1.32-.54-2.13c-.2-.8-.35-1.62-.46-2.44a4.7 4.7 0 0 1 .43-3.08c.58-.55 1.44-.7 2.17-.37a4.4 4.4 0 0 1 1.57 2.17c.43 1.07.72 2.19.86 3.33.27 1.67.79 4.1.8 4.6 0-.61-.11-1.91 0-2.5.12-.6.54-1.1 1.12-1.33.5-.15 1.02-.19 1.53-.1.52.1.98.4 1.29.83.38.98.6 2 .63 3.05.04-.91.2-1.82.47-2.7.28-.39.68-.67 1.15-.8.55-.1 1.11-.1 1.66 0 .46.15.85.44 1.14.82.35.88.56 1.82.63 2.77 0 .23.12-.65.48-1.24a1.67 1.67 0 1 1 3.17 1.07v3.77c-.06.97-.2 1.94-.4 2.9-.29.85-.7 1.65-1.2 2.38-.8.9-1.48 1.92-1.98 3.02a6.67 6.67 0 0 0 .03 3.2c-.68.07-1.37.07-2.05 0-.65-.1-1.45-1.4-1.67-1.8a.63.63 0 0 0-1.13 0c-.37.64-1.18 1.79-1.75 1.85-1.12.14-3.42 0-5.23 0 0 0 .3-1.66-.39-2.27-.68-.6-1.38-1.3-1.9-1.76l-1.4-1.6Z' clip-rule='evenodd'/%3E%3Cpath fill='%23000' d='M20.65 22.3v-6.24c0-.38-.31-.68-.7-.68-.37 0-.68.3-.68.68v6.23c0 .38.3.68.69.68.38 0 .69-.3.69-.68ZM17.2 22.3l-.04-6.25a.67.67 0 1 0-1.34.01l.04 6.24a.67.67 0 1 0 1.34 0ZM12.37 16.07l.04 6.22c0 .38.3.68.67.68.37 0 .67-.3.67-.68l-.04-6.23c0-.38-.3-.68-.67-.68-.37 0-.67.31-.67.69Z'/%3E%3C/svg%3E"), auto;
+            --cursor-text: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='21' fill='none' viewBox='0 0 13 25'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1.75' d='M8 18.48v-4.23h1.27v-3H8V5.8c.2-.44.5-.82.87-1.14.23-.16.52-.32.83-.44a5.4 5.4 0 0 1 1.17-.05l.87.05.05-.87.08-1.27.06-.87-.88-.06c-.7-.04-1.4 0-2.1.14l-.05.01-.06.02c-.7.25-1.29.56-1.82.95L7 2.28l-.03.02c-.16.13-.31.28-.46.42a6.93 6.93 0 0 0-.39-.38l-.03-.03-.03-.02a5.86 5.86 0 0 0-1.85-.97l-.04-.01-.04-.01a8.1 8.1 0 0 0-2.19-.16l-.87.06.06.87.08 1.27.06.88.87-.06c.43-.03.85 0 1.27.08.23.08.5.21.74.4.33.3.63.72.84 1.19v5.42H3.72v3h1.27v4.2c-.21.47-.51.89-.88 1.24-.2.14-.46.28-.75.37-.36.07-.8.1-1.22.06l-.87-.05-.06.87-.08 1.27-.06.88.87.05c.71.05 1.42 0 2.12-.14h.04l.04-.02a5.83 5.83 0 0 0 1.88-.95l.03-.02.03-.03.44-.43c.14.14.28.27.44.4l.02.02.02.01c.55.42 1.14.73 1.76.95l.05.02.06.01c.77.17 1.47.22 2.17.18l.88-.05-.05-.87-.07-1.27-.05-.87-.87.04c-.42.03-.83 0-1.24-.08-.24-.1-.52-.25-.8-.45A3.4 3.4 0 0 1 8 18.48Z'/%3E%3C/svg%3E"), auto; 
+        }
+        * {
+            scroll-behavior: smooth;
+            transition: all 300ms ease-in-out;
+            cursor: var(--cursor-default);
+            margin: 0;
+            font-weight: 300;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lexend Deca', Tahoma, Geneva, Verdana, sans-serif;
+            outline: none;
+        }
+        ::-webkit-scrollbar {
+            background-color: rgb(250, 250, 250);
+            width: 15px;
+        } 
+        ::-webkit-scrollbar-track {
+            background-color: rgb(250, 250, 250);
+        } 
+        ::-webkit-scrollbar-thumb { 
+            background-color: rgba(0, 0, 0, .05);
+            border-radius: 16px;
+            border: 4px solid rgb(250, 250, 250);
+        } 
+        ::-webkit-scrollbar-thumb:hover {
+            cursor: var(--cursor-pointer);
+            background-color: rgba(0, 0, 0, .15);
+        } 
+        ::-webkit-scrollbar-button {
+            display:none;
+        }
+        ::selection {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        html, body {
+            animation: blurIn 2s ease-in-out;
+        }
+        body {
+            background-color: white;
+            color: #333;
+        }
+        @keyframes blurIn {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+                filter: blur(15px);
+            }
+            25% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(1);
+                filter: blur(0px);
+                opacity: 1;
+            }
+        }
+        .app-container {
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 50px;
+        }
+        .back-button, .back-button * {
+            cursor: var(--cursor-pointer);
+        }
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+        .back-button.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .time {
+            color: #888;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .time-icon {
+            margin-right: 5px;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+        .button {
+            border: 1px solid #2980b9;
+            background: white;
+            color: black;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .main-title {
+            text-align: center;
+            font-size: 28px;
+            margin: 50px 0;
+            color: #333;
+        }
+        .content {
+            flex: 1;
+            padding: 0 40px;
+            overflow-y: auto;
+            height: calc(100vh - 130px);
+        }
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: auto;
+            max-height: none;
+            overflow: visible;
+            margin-bottom: 20px;
+        }
+        /* Pantalla inicial */
+        .options-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .option-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            color: #555;
+            cursor: var(--cursor-pointer);
+        }
+        .option-item:hover {
+            background-color: #f5f5f5;
+        }
+        /* Rutina */
+        .timer-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .timer-circle {
+            width: 90px;
+            height: 90px;
+            border: 2px solid black;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timer-info {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        .timer-value {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .schedule-table td {
+            padding: 10px 5px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+        }
+        .schedule-table .time-col {
+            width: 90px;
+            color: #999;
+        }
+        .current-activity {
+            background-color: #f5f9ff;
+        }
+        /* Proyectos */
+        .project-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .project-name {
+            font-size: 18px;
+            color: #333;
+        }
+        .project-meta {
+            text-align: right;
+            font-size: 12px;
+            color: #888;
+        }
+        /* Pendientes */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: var(--cursor-pointer);
+            color: #999;
+            border-bottom: 2px solid transparent;
+            margin-right: 10px;
+        }
+        .tab.active {
+            color: #333;
+            border-bottom-color: #333;
+        }
+        .task-list {
+            list-style-type: none;
+        }
+        .task-item {
+            display: flex;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+        }
+        .task-number {
+            width: 30px;
+            color: #999;
+        }
+        .task-completed {
+            color: #ccc;
+            text-decoration: line-through;
+        }
+        /* Herramientas */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .tool-item {
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #f0f0f0;
+            border-radius: 15px;
+            gap: 15px;
+            color: #555;
+        }
+        /* Voice button */
+        .voice-button {
+            position: absolute;
+            bottom: 40px;
+            left: 92.5%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            cursor: var(--cursor-pointer);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .voice-button::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: gray;
+            filter: blur(35px);
+            z-index: -1;
+        }
+        .voice-anim {
+            animation: pulse 1.5s infinite alternate;
+        }
+        .voice-button.recording {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(140, 82, 255, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(140, 82, 255, 0);
+            }
+        }
+        .screen {
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 60px);
+            top: 60px;
+            left: 0;
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(20px);
+            pointer-events: none;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .screen.active {
+            filter: blur(0);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 0 15px;
+            }
+            .card {
+                padding: 15px;
+            }
+            .main-title {
+                font-size: 24px;
+                margin: 15px 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .content {
+                padding: 0 10px;
+            }
+            .options-menu {
+                padding: 10px;
+            }
+            .option-item {
+                padding: 12px;
+            }
+        }
+        .voice-status {
+            position: fixed;
+            bottom: 100px;
+            left: 97.5%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            background: #3fff45;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 10px;
+            height: 10px;
+        }
+        .chat-history {
+            position: fixed;
+            bottom: 140px;
+            left: 85%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            width: 350px;
+            height: 350px;
+            overflow-y: auto;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            filter: blur(10px);
+        }
+        .status-message {
+            color: #666;
+            font-size: 0.9em;
+            text-align: center;
+            padding: 5px;
+            background-color: #f8f8f8 !important;
+        }
+        .chat-message {
+            font-size: 12px;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .user-message {
+            background-color: #e6f7ff;
+            text-align: right;
+        }
+        .assistant-message {
+            background-color: #f0f0f0;
+        }
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        .add-task-button {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #2980b9;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: var(--cursor-pointer);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 90;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <button class="back-button" id="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+            <div class="time">
+                <span class="time-icon">⏱</span>
+                <span id="current-time">10:35 A.M.</span>
+            </div>
+            <div class="controls">
+                <button class="button" id="mic-status">
+                    <span>🎤</span>
+                    <span id="mic-indicator">🔵</span>
+                </button>
+                <button class="button" id="menu-button">⋮⋮⋮</button>
+            </div>
+        </div>
+        <!-- Pantalla Inicial -->
+        <div id="home-screen" class="screen active">
+            <h1 class="main-title">¿Qué deseas hacer en este momento?</h1>
+            <div class="content">
+                <div class="card options-menu">
+                    <div class="option-item" data-screen="rutina">Rutina</div>
+                    <div class="option-item" data-screen="proyectos">Proyectos</div>
+                    <div class="option-item" data-screen="pendientes">Pendientes</div>
+                    <div class="option-item" data-screen="herramientas">Herramientas</div>
+                </div>
+            </div>
+        </div>
+        <!-- Pantalla Rutina -->
+        <div id="rutina-screen" class="screen">
+            <h1 class="main-title">Tu rutina</h1>
+            <div class="content">
+                <div class="card">
+                    <div class="timer-container">
+                        <div class="timer-circle">
+                            <span id="current-hour">10:35</span>
+                        </div>
+                        <div class="timer-info">
+                            <div class="timer-value" id="current-activity">Actividad actual</div>
+                            <div>Tiempo restante: <span id="remaining-time">25 min</span></div>
+                        </div>
+                    </div>
+                    <table class="schedule-table" id="rutina-table">
+                        <!-- Contenido dinámico de la rutina -->
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Pantalla Proyectos -->
+        <div id="proyectos-screen" class="screen">
+            <h1 class="main-title">Tus proyectos</h1>
+            <div class="content">
+                <div class="card" id="proyectos-container">
+                    <!-- Contenido dinámico de proyectos -->
+                </div>
+            </div>
+        </div>
+        <!-- Pantalla Pendientes -->
+        <div id="pendientes-screen" class="screen">
+            <h1 class="main-title">Tus pendientes</h1>
+            <div class="content">
+                <div class="card">
+                    <div class="tabs" id="categorias-pendientes">
+                        <!-- Categorías dinámicas -->
+                    </div>
+                    <ul class="task-list" id="lista-tareas">
+                        <!-- Tareas dinámicas -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Pantalla Herramientas -->
+        <div id="herramientas-screen" class="screen">
+            <h1 class="main-title">Herramientas (en desarrollo)</h1>
+            <div class="content">
+                <div class="card">
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="22"></line>
+                            </svg>
+                            <span>Audio</span>
+                        </div>
+                        <div class="tool-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                                <line x1="10" y1="2" x2="10" y2="22"></line>
+                            </svg>
+                            <span>Video</span>
+                        </div>
+                        <div class="tool-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <circle cx="19" cy="5" r="2"></circle>
+                                <circle cx="5" cy="19" r="2"></circle>
+                                <path d="M10.2 10.2L5.5 17.5"></path>
+                                <path d="M14.5 6.5l4.5 4.5"></path>
+                                <path d="M18.5 6.5l-8 8"></path>
+                            </svg>
+                            <span>Diagrama</span>
+                        </div>
+                        <div class="tool-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                <path d="M2 2l7.586 7.586"></path>
+                                <circle cx="11" cy="11" r="2"></circle>
+                            </svg>
+                            <span>Dibujo</span>
+                        </div>
+                        <div class="tool-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            <span>Documento</span>
+                        </div>
+                        <div class="tool-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <circle cx="12" cy="12" r="4"></circle>
+                            </svg>
+                            <span>Idea</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Botón de voz -->
+        <button class="voice-button voice-anim" id="voice-button" aria-label="Activar micrófono">🎤</button>
+        <div class="voice-status" id="voice-status"></div>
+        <div class="chat-history" id="chat-history"></div>
+    </div>
+    <script>
+        // Configuración de la API
+        const GEMINI_API = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+        const API_KEY = 'AIzaSyAYBStilFuE6r0EbmhgXfRLH_2PH2zKi90';
+        const API_BASE = 'http://localhost:5000/api';
+        // Variables globales
+        const DocumentTitleOriginal = document.title;
+        let isListening = false;
+        let recognition;
+        let currentCategory = 'personal';
+        let chatHistory = [];
+        let chatHistoryContext = [];
+        let chatVisible = false;
+        let chatTimeout;
+        let isTyping = false;
+        // Actualizar reloj
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('es-MX', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            document.getElementById('current-time').textContent = timeString;
+            document.getElementById('current-hour').textContent = timeString;
+            // Actualizar cada minuto
+            setTimeout(updateClock, 60000 - (now.getSeconds() * 1000 + now.getMilliseconds()));
+        }
+        // Navegación entre pantallas
+        function showScreen(screenName) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            const screen = document.getElementById(`${screenName}-screen`);
+            if (screen) {
+                screen.classList.add('active');
+                document.getElementById('back-button').classList.toggle('visible', screenName !== 'home');
+                // Cargar datos según la pantalla
+                if (screenName === 'rutina') {
+                    cargarRutina();
+                } else if (screenName === 'proyectos') {
+                    cargarProyectos();
+                } else if (screenName === 'pendientes') {
+                    cargarCategorias();
+                    cargarPendientes(currentCategory);
+                }
+            }
+        }
+        // Cargar rutina desde la API
+        async function cargarRutina() {
+            try {
+                const response = await fetch(`${API_BASE}/rutina`);
+                const rutina = await response.json();
+                const tabla = document.getElementById('rutina-table');
+                tabla.innerHTML = '';
+                const now = new Date();
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+                rutina.forEach(item => {
+                    const [hora, minuto] = item.hora.split(':').map(Number);
+                    const row = document.createElement('tr');
+                    // Marcar actividad actual
+                    if (hora === currentHour && Math.abs(minuto - currentMinute) < 30) {
+                        row.classList.add('current-activity');
+                        document.getElementById('current-activity').textContent = item.actividad;
+                        // Calcular tiempo restante
+                        const nextActivityIndex = rutina.indexOf(item) + 1;
+                        if (nextActivityIndex < rutina.length) {
+                            const [nextHora, nextMinuto] = rutina[nextActivityIndex].hora.split(':').map(Number);
+                            const minutesRemaining = (nextHora * 60 + nextMinuto) - (currentHour * 60 + currentMinute);
+                            document.getElementById('remaining-time').textContent = `${minutesRemaining} min`;
+                        }
+                    }
+                    row.innerHTML = `
+                        <td class="time-col">${item.hora}</td>
+                        <td>${item.actividad}</td>
+                    `;
+                    tabla.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error cargando rutina:', error);
+            }
+        }
+        // Cargar proyectos desde la API
+        async function cargarProyectos() {
+            try {
+                const response = await fetch(`${API_BASE}/proyectos`);
+                const proyectos = await response.json();
+                const container = document.getElementById('proyectos-container');
+                container.innerHTML = '';
+                if (proyectos.length === 0) {
+                    container.innerHTML = '<p>No hay proyectos. Crea uno nuevo usando el asistente de voz.</p>';
+                    return;
+                }
+                proyectos.forEach(proyecto => {
+                    const fechaCreacion = new Date(proyecto.creado);
+                    const fechaFormateada = fechaCreacion.toLocaleDateString('es-MX');
+                    const proyectoElement = document.createElement('div');
+                    proyectoElement.className = 'project-item';
+                    proyectoElement.innerHTML = `
+                        <div>
+                            <div class="project-name">${proyecto.nombre}</div>
+                            <div>${proyecto.descripcion || 'Sin descripción'}</div>
+                        </div>
+                        <div class="project-meta">
+                            <div>Creado: ${fechaFormateada}</div>
+                        </div>
+                    `;
+                    container.appendChild(proyectoElement);
+                });
+            } catch (error) {
+                console.error('Error cargando proyectos:', error);
+            }
+        }
+        // Cargar categorías de pendientes
+        async function cargarCategorias() {
+            try {
+                const response = await fetch(`${API_BASE}/categorias`);
+                const categorias = await response.json();
+                const tabsContainer = document.getElementById('categorias-pendientes');
+                tabsContainer.innerHTML = '';
+                categorias.forEach(categoria => {
+                    const tab = document.createElement('div');
+                    tab.className = `tab ${categoria === currentCategory ? 'active' : ''}`;
+                    tab.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+                    tab.addEventListener('click', () => {
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        currentCategory = categoria;
+                        cargarPendientes(categoria);
+                    });
+                    tabsContainer.appendChild(tab);
+                });
+            } catch (error) {
+                console.error('Error cargando categorías:', error);
+            }
+        }
+        // Cargar pendientes de una categoría
+        async function cargarPendientes(categoria) {
+            try {
+                const response = await fetch(`${API_BASE}/pendientes?categoria=${categoria}`);
+                const tareas = await response.json();
+                const listaTareas = document.getElementById('lista-tareas');
+                listaTareas.innerHTML = '';
+                if (tareas.length === 0) {
+                    listaTareas.innerHTML = '<li class="task-item">No hay tareas pendientes en esta categoría</li>';
+                    return;
+                }
+                tareas.forEach(tarea => {
+                    const tareaElement = document.createElement('li');
+                    tareaElement.className = `task-item ${tarea.completada ? 'task-completed' : ''}`;
+                    tareaElement.innerHTML = `
+                        <span class="task-number">${tarea.id}.</span>
+                        <span>${tarea.texto}</span>
+                    `;
+                    // Agregar evento para marcar como completada
+                    tareaElement.addEventListener('click', () => toggleTareaCompletada(categoria, tarea.id));
+                    listaTareas.appendChild(tareaElement);
+                });
+            } catch (error) {
+                console.error('Error cargando pendientes:', error);
+            }
+        }
+        async function eliminarTarea(categoria, id) {
+            try {
+                await fetch(`${API_BASE}/pendientes/${categoria}/${id}`, {
+                    method: 'DELETE'
+                });
+                cargarPendientes(categoria);
+            } catch (error) {
+                console.error('Error eliminando tarea:', error);
+            }
+        }
+        async function eliminarProyecto(id) {
+            try {
+                await fetch(`${API_BASE}/proyectos/${id}`, {
+                    method: 'DELETE'
+                });
+                cargarProyectos();
+            } catch (error) {
+                console.error('Error eliminando proyecto:', error);
+            }
+        }
+        async function actualizarProyecto(id, campo, valor) {
+            try {
+                await fetch(`${API_BASE}/proyectos/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ [campo]: valor })
+                });
+                cargarProyectos();
+            } catch (error) {
+                console.error('Error actualizando proyecto:', error);
+            }
+        }
+        async function crearActividadRutina(hora, actividad) {
+            try {
+                await fetch(`${API_BASE}/rutina`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ hora, actividad })
+                });
+                cargarRutina();
+            } catch (error) {
+                console.error('Error creando actividad:', error);
+            }
+        }
+        async function eliminarActividadRutina(id) {
+            try {
+                await fetch(`${API_BASE}/rutina/${id}`, {
+                    method: 'DELETE'
+                });
+                cargarRutina();
+            } catch (error) {
+                console.error('Error eliminando actividad:', error);
+            }
+        }
+        async function actualizarActividadRutina(id, nuevosDatos) {
+            try {
+                await fetch(`${API_BASE}/rutina/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(nuevosDatos)
+                });
+                cargarRutina();
+            } catch (error) {
+                console.error('Error actualizando actividad:', error);
+            }
+        }
+        // Marcar tarea como completada/pendiente
+        async function toggleTareaCompletada(categoria, id) {
+            try {
+                await fetch(`${API_BASE}/pendientes/${categoria}/${id}`, {
+                    method: 'PUT'
+                });
+                cargarPendientes(categoria);
+            } catch (error) {
+                console.error('Error actualizando tarea:', error);
+            }
+        }
+        // Crear nueva tarea
+        async function crearTarea(texto, categoria = currentCategory) {
+            try {
+                const response = await fetch(`${API_BASE}/pendientes`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        texto: texto,
+                        categoria: categoria
+                    })
+                });
+                if (response.ok) {
+                    cargarPendientes(categoria);
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Error creando tarea:', error);
+                return false;
+            }
+        }
+        // Crear nuevo proyecto
+        async function crearProyecto(nombre, descripcion = '') {
+            try {
+                const response = await fetch(`${API_BASE}/proyectos`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nombre: nombre,
+                        descripcion: descripcion
+                    })
+                });
+                if (response.ok) {
+                    cargarProyectos();
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Error creando proyecto:', error);
+                return false;
+            }
+        }
+        // Analizar comandos simples sin necesidad de IA
+        function analizarComandoSimple(texto) {
+            // Comandos de navegación
+            if (texto.includes('ir a inicio') || texto.includes('pantalla principal') || texto.includes('volver a inicio') || texto.includes('mostrar inicio')) {
+                return {
+                    comando: 'mostrar_pantalla',
+                    pantalla: 'home',
+                    mensaje: 'Volviendo a la pantalla principal'
+                };
+            }
+            else if (texto.includes('ir a rutina') || texto.includes('ver rutina') || texto.includes('mostrar rutina')) {
+                return {
+                    comando: 'mostrar_pantalla',
+                    pantalla: 'rutina',
+                    mensaje: 'Mostrando tu rutina'
+                };
+            }
+            else if (texto.includes('ir a proyecto') || texto.includes('ver proyecto') || texto.includes('mostrar proyecto')) {
+                return {
+                    comando: 'mostrar_pantalla',
+                    pantalla: 'proyectos',
+                    mensaje: 'Mostrando tus proyectos'
+                };
+            }
+            else if (texto.includes('ir a pendiente') || texto.includes('ver pendiente') || texto.includes('mostrar pendiente') || texto.includes('ir a tarea') || texto.includes('ver tarea') || texto.includes('mostrar tarea')) {
+                return {
+                    comando: 'mostrar_pantalla',
+                    pantalla: 'pendientes',
+                    mensaje: 'Mostrando tus pendientes'
+                };
+            }
+            else if (texto.includes('ir a otro') || texto.includes('ver otro') || texto.includes('mostrar otro')) {
+                return {
+                    comando: 'mostrar_pantalla',
+                    pantalla: 'herramientas',
+                    mensaje: 'Mostrando herramientas'
+                };
+            }
+            // Si no es un comando simple, devolver null para procesarlo con IA
+            return null;
+        }
+        // Add this function after the analizarComandoSimple function and before the ejecutarAccion function
+        // Extraer JSON de la respuesta del modelo
+        function extraerJSONDeRespuesta(respuestaTexto) {
+            try {
+                // Buscar contenido entre triple backticks
+                const regex = /\`\`\`(?:json)?\s*(\{[\s\S]*?\})\s*\`\`\`/;
+                const match = respuestaTexto.match(regex);
+                if (match && match[1]) {
+                    // Intentar parsear el JSON extraído
+                    const jsonStr = match[1].trim();
+                    const jsonObj = JSON.parse(jsonStr);
+                    // Normalizar el comando si es necesario
+                    if (jsonObj.comando === 'show_pantalla') {
+                        jsonObj.comando = 'mostrar_pantalla';
+                    }
+                    // Corregir el mensaje si tiene formato extraño
+                    if (jsonObj.mensaje && jsonObj.mensaje.includes('¿¿')) {
+                        jsonObj.mensaje = jsonObj.detalles?.texto || "Entendido";
+                    }
+                    return jsonObj;
+                }
+                // Si no hay coincidencia con backticks, intentar encontrar un objeto JSON directamente
+                const jsonRegex = /\{[\s\S]*"comando"[\s\S]*\}/;
+                const jsonMatch = respuestaTexto.match(jsonRegex);
+                if (jsonMatch) {
+                    const jsonObj = JSON.parse(jsonMatch[0]);
+                    // Normalizar el comando si es necesario
+                    if (jsonObj.comando === 'show_pantalla') {
+                        jsonObj.comando = 'mostrar_pantalla';
+                    }
+                    return jsonObj;
+                }
+                // Si no se encuentra JSON, devolver un objeto de error
+                return {
+                    comando: "mensaje",
+                    mensaje: "No pude entender ese comando. ¿Puedes intentarlo de nuevo?"
+                };
+            } catch (error) {
+                console.error('Error extrayendo JSON:', error);
+                return {
+                    comando: "mensaje",
+                    mensaje: "Hubo un problema procesando la respuesta. ¿Puedes intentarlo de nuevo?"
+                };
+            }
+        }
+        // Ejecutar acción basada en el comando
+        function ejecutarAccion(accion) {
+            if (!accion || !accion.comando)
+                return leerEnVozAlta('No se tiene la acción o el comando correctamente.');
+            if (accion.comando.includes('|'))
+                return leerEnVozAlta('El modelo de IA respondió de manera incorrecta, no se puede ejecutar el comando.');
+            // Mensaje predeterminado
+            let mensajeFeedback = accion.mensaje || "Acción completada";
+            let completed = false;
+            if (accion.detalles) {
+                if (accion.detalles?.categoria?.includes('pendiente'))
+                    showScreen('pendientes');
+                else if (accion.detalles?.categoria?.includes('proyecto'))
+                    showScreen('proyectos');
+                else if (accion.detalles?.categoria?.includes('rutina'))
+                    showScreen('rutina');
+                else if (accion.detalles?.categoria?.includes('herramienta'))
+                    showScreen('herramientas');
+            } else
+                console.error(accion);
+            switch (accion.comando) {
+                // Comandos de Tareas
+                case 'crear_pendiente':
+                    if (accion.detalles?.texto) {
+                        const exito = crearTarea(accion.detalles.texto, accion.detalles.categoria);
+                        mensajeFeedback = exito ? `Tarea "${accion.detalles.texto}" creada` : "Error creando tarea";
+                        completed = true;
+                    }
+                    break;
+                case 'modificar_pendiente':
+                    if (accion.detalles?.id) {
+                        toggleTareaCompletada(accion.detalles.categoria, accion.detalles.id);
+                        mensajeFeedback = `Tarea ${accion.detalles.id} actualizada`;
+                        completed = true;
+                    }
+                    break;
+                case 'eliminar_pendiente':
+                    if (accion.detalles?.id) {
+                        eliminarTarea(accion.detalles.categoria, accion.detalles.id);
+                        mensajeFeedback = `Tarea ${accion.detalles.id} eliminada`;
+                        completed = true;
+                    }
+                    break;
+                // Comandos de Proyectos
+                case 'crear_proyecto':
+                    if (accion.detalles?.nombre) {
+                        const exito = crearProyecto(accion.detalles.nombre, accion.detalles.descripcion);
+                        mensajeFeedback = exito ? `Proyecto "${accion.detalles.nombre}" creado` : "Error creando proyecto";
+                        completed = true;
+                    }
+                    break;
+                case 'eliminar_proyecto':
+                    if (accion.detalles?.id) {
+                        eliminarProyecto(accion.detalles.id);
+                        mensajeFeedback = `Proyecto ${accion.detalles.id} eliminado`;
+                        completed = true;
+                    }
+                    break;
+                case 'actualizar_proyecto':
+                    if (accion.detalles?.id && accion.detalles?.campo) {
+                        actualizarProyecto(accion.detalles.id, accion.detalles.campo, accion.detalles.valor);
+                        mensajeFeedback = `Proyecto ${accion.detalles.id} actualizado`;
+                        completed = true;
+                    }
+                    break;
+                // Comandos de Rutina
+                case 'crear_rutina':
+                    if (accion.detalles?.hora && accion.detalles?.actividad) {
+                        crearActividadRutina(accion.detalles.hora, accion.detalles.actividad);
+                        mensajeFeedback = `Actividad "${accion.detalles.actividad}" agregada a las ${accion.detalles.hora}`;
+                        completed = true;
+                    }
+                    break;
+                case 'eliminar_rutina':
+                    if (accion.detalles?.id) {
+                        eliminarActividadRutina(accion.detalles.id);
+                        mensajeFeedback = `Actividad ${accion.detalles.id} eliminada`;
+                        completed = true;
+                    }
+                    break;
+                case 'actualizar_rutina':
+                    if (accion.detalles?.id && accion.detalles?.nuevosDatos) {
+                        actualizarActividadRutina(accion.detalles.id, accion.detalles.nuevosDatos);
+                        mensajeFeedback = `Actividad ${accion.detalles.id} actualizada`;
+                        completed = true;
+                    }
+                    break;
+                // Comandos de Navegación
+                case 'mostrar_pantalla':
+                    if (accion.detalles.categoria) {
+                        if (!(accion.detalles.categoria !== 'pendientes' && accion.detalles.categoria !== 'rutina' && accion.detalles.categoria !== 'proyectos' && accion.detalles.categoria !== 'herramientas')) {
+                            mensajeFeedback = accion.mensaje;
+                            showScreen(accion.detalles.categoria);
+                            completed = true;
+                        }
+                    }
+                    break;
+                case 'informar_mensaje_usuario':
+                    completed = true;
+                    break;
+                default:
+                    mensajeFeedback = "El comando " + accion.comando +" no reconocido";
+                    console.warn('Comando no implementado:', accion.comando);
+            }
+            if (!completed)
+                leerEnVozAlta('Se obtuvo el comando '+accion.comando+' pero no se pudo ejecutar debido a la falta de parametros exactos.');
+            else leerEnVozAlta(mensajeFeedback);
+        }
+        // Leer texto en voz alta
+        function leerEnVozAlta(texto) {
+            const statusElement = document.createElement('div');
+            statusElement.className = 'chat-message status-message';
+            statusElement.textContent = '🗣 Reproduciendo respuesta...';
+            tempElements.push(statusElement);
+            document.getElementById('chat-history').appendChild(statusElement);
+            document.getElementById('chat-history').scrollTop = document.getElementById('chat-history').scrollHeight;
+            texto = texto.replaceAll("*", " ").replaceAll("_", "").replaceAll("-", "");
+            // Cancel any previous speech before starting new one
+            window.speechSynthesis.cancel();
+            // Rest of the existing function
+            if (!texto) texto = "No se obtuvo correctamente el texto a decir.";
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(texto.replace(/```[\s\S]*?```/g, '').trim());
+            utterance.lang = 'es-ES';
+            utterance.onend = () => {
+                // Eliminar estado de habla
+                for (let i = 0; i < tempElements.length; i++)
+                    tempElements[i].remove();
+                // Ocultar chat después de 10 segundos
+                chatTimeout = setTimeout(() => {
+                    if (!isTyping && !isListening) {
+                        document.getElementById('chat-history').style.opacity = '0';
+                        document.getElementById('chat-history').style.filter = 'blur(10px)';
+                        chatVisible = false;
+                    }
+                }, 1000);
+            };
+            synth.speak(utterance);
+            // Store the utterance reference
+            window.currentUtterance = utterance;
+            document.title = DocumentTitleOriginal;
+        }
+        // Modificar la función procesarComandoVoz para usar el nuevo extractor de JSON
+        async function procesarComandoVoz(transcript, salute) {
+            try {
+                const chatHistoryElement = document.getElementById('chat-history');
+                // Mostrar chat al iniciar interacción
+                if (!chatVisible) {
+                    chatHistoryElement.style.opacity = '1';
+                    chatHistoryElement.style.filter = 'blur(0px)';
+                    chatVisible = true;
+                }
+                // Resetear timeout de ocultar chat
+                clearTimeout(chatTimeout);
+                // Efecto de escritura para mensajes de la IA
+                const typewriterEffect = (element, text, speed = 10) => {
+                    return new Promise(resolve => {
+                        let i = 0;
+                        element.textContent = '';
+                        isTyping = true;
+                        const typeInterval = setInterval(() => {
+                            if (i < text.length) {
+                                element.textContent += text.charAt(i);
+                                chatHistoryElement.scrollTop = chatHistoryElement.scrollHeight;
+                                i++;
+                            } else {
+                                clearInterval(typeInterval);
+                                isTyping = false;
+                                resolve();
+                            }
+                        }, speed);
+                    });
+                };
+                if (salute === undefined) {
+                    // Agregar mensaje del usuario
+                    const userMessageElement = document.createElement('div');
+                    userMessageElement.className = 'chat-message user-message';
+                    chatHistoryElement.appendChild(userMessageElement);
+                    chatHistoryElement.scrollTop = chatHistoryElement.scrollHeight;
+                    await typewriterEffect(userMessageElement, transcript);
+                    
+                }
+                // Analizar el comando localmente primero
+                const comandoSimple = (salute !== undefined) ? false : analizarComandoSimple(transcript.toLowerCase());
+                if (comandoSimple) {
+                    // Si es un comando simple, ejecutarlo directamente
+                    ejecutarAccion(comandoSimple);
+                    // Agregar respuesta del asistente
+                    const assistantMessageElement = document.createElement('div');
+                    assistantMessageElement.className = 'chat-message assistant-message';
+                    chatHistoryElement.appendChild(assistantMessageElement);
+                    await typewriterEffect(assistantMessageElement, comandoSimple.mensaje);
+                    // Ocultar chat después de 10 segundos
+                    chatTimeout = setTimeout(() => {
+                        if (!isTyping && !isListening) {
+                            chatHistoryElement.style.opacity = '0';
+                            chatHistoryElement.style.filter = 'blur(10px)';
+                            chatVisible = false;
+                        }
+                    }, 1000);
+                    // Leer respuesta en voz alta
+                    leerEnVozAlta(comandoSimple.mensaje || "Comando ejecutado");
+                } else {
+                    // Si no es un comando simple, enviar a Gemini API
+                    try {
+                        const response = await fetch(`${GEMINI_API}?key=${API_KEY}`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                contents: [{
+                                    parts: [{
+                                        text: `Como asistente de productividad, procesa este comando: "${transcript}". Tu nombre de asistente es AndromadusAI, y creador es Magnus Norgaard y el es un grandioso programador enfocado a crear tecnología innovadora para hacer la vida más sencilla, la forma en la que puedes referirte a ti es como un asistente sin género por lo que tus respuestas serán neutrales en cuanto a cómo te refieres a ti como ser. ${chatHistoryContext.length > 0 ? `Este es el contexto de la conversación: ${chatHistoryContext.join('\n')}` : 'Saluda al usuario diciendo tu nombre y un calido saludo diciendo quien eres, también al saludarlo dile ya sea buenos días, buenas tardes, etc, dependiendo de la hora. Después de esto resolveras la solicitud que hizo el usuario (al ser el primer mensaje, si el usuario no te pregunto quien es tu creador no lo hagas mención). Siempre el saludo va en {detalles.texto} y el mensaje de respuesta en {mensaje}.'}
+                                        {comando} Opciones válidas (solo selecciona una): [informar_mensaje_usuario|mostrar_pantalla|crear_pendiente|leer_pendiente|eliminar_pendiente|actualizar_pendiente|crear_rutina|leer_rutina|eliminar_rutina|actualizar_rutina|crear_proyecto|leer_proyecto|eliminar_proyecto|actualizar_proyecto].
+                                        {detalles.categoria} Pantallas válidas (pantalla se refiere al UI del usuario que está interactuando con la app) (solo selecciona una si el usuario solicita una pantalla que no existe le dirás que no existe esa pantalla): [home|pendientes|rutina|proyectos|herramientas]
+                                        Importante:
+                                        - Validación en {comando: "mostrar_pantalla"}. Si elijes el comando con el valor de "mostrar_pantalla", entonces en {detalles.categoria} debe tener uno de estos valores que corresponden con las pantallas validas para ese comando: [informar_mensaje_usuario|rutina|proyectos|pendientes]
+                                        - Si el usuario no hace mención para preguntar de tu creador o de quien eres no hagas mención .
+                                        - Si el usuario pide información de su IP, datos de el usuario muy privados, tu dirás que no cuentas con ninguno de esos datos y no puedes informar esos datos privados ya que infringen las políticas de privacidad de datos de ti como asistente (debido a que así fuiste programado). 
+                                        - No puedes generar código o crear código, no le des ningún código de nada.
+                                        - Nunca solicites información de ubicaciones.
+                                        - {detalles.texto} y {mensaje} no deben contener la misma información. El {mensaje} debe ser la respuesta rápida del usuario y {detalles.texto} son los detalles de la respuesta. Si directamente repites cosas en {detalles.texto} y en {mensaje}, en {detalles.texto} no agregues nada, dejalo en blanco).
+                                        Fecha y hora actual: ${new Date().toLocaleString()}
+                                        País del usuario: ${new Intl.DisplayNames([navigator.language], { type: 'region' }).of(new Intl.NumberFormat().resolvedOptions().locale.split('-')[1] || "US")}
+                                        UserAgent del usuario: ${navigator.userAgent}
+                                        Responde solo con JSON válido con formato:
+                                        {"comando": "$comando$", "detalles": {"texto": "$texto_de_la_tarea$", "categoria": "$categoria_de_la_solicitud$"}, "mensaje": "$mensaje_para_el_usuario$"}`
+                                    }]
+                                }]
+                            })
+                        });
+                        if (!response.ok)
+                            throw new Error('Error en la respuesta de Gemini API');
+                        const data = await response.json();
+                        // Extract text from Gemini response format
+                        const responseText = data.candidates[0].content.parts[0].text;
+                        // Extraer JSON de la respuesta usando la función
+                        let respuesta = extraerJSONDeRespuesta(responseText);
+                        // Ejecutar acción correspondiente
+                        if (respuesta.detalles.texto) {
+                            if (respuesta.detalles.texto.replaceAll(" ", "").toLowerCase() !== respuesta.mensaje.replaceAll(" ", "").toLowerCase())
+                                respuesta.mensaje = (respuesta.detalles.texto + "\n\n" + respuesta.mensaje);
+                        }
+                        ejecutarAccion(respuesta);
+                        // Agregar respuesta del asistente
+                        const assistantMessageElement = document.createElement('div');
+                        assistantMessageElement.className = 'chat-message assistant-message';
+                        chatHistoryElement.appendChild(assistantMessageElement);
+                        chatHistoryContext.push(respuesta);
+                        await typewriterEffect(assistantMessageElement, respuesta.mensaje ? respuesta.mensaje.replaceAll("**", "'").replaceAll("|", ", ").replaceAll("_", " ") : respuesta.mensaje || "Comando ejecutado");
+                    } catch (error) {
+                        console.error('Error con Gemini API:', error);
+                        // Respuesta de error
+                        const errorMessage = "Lo siento, no pude procesar tu solicitud. El servicio de Gemini API podría no estar disponible. Esta fue la respuesta: " + error;
+                        const assistantMessageElement = document.createElement('div');
+                        assistantMessageElement.className = 'chat-message assistant-message';
+                        chatHistoryElement.appendChild(assistantMessageElement);
+                        leerEnVozAlta(errorMessage);
+                        await typewriterEffect(assistantMessageElement, errorMessage);
+                    }
+                }
+                // Mantener el scroll al final
+                chatHistoryElement.scrollTop = chatHistoryElement.scrollHeight;
+            } catch (error) {
+                console.error('Error procesando comando:', error);
+                leerEnVozAlta("Lo siento, hubo un error procesando tu solicitud. El error fue: "+error);
+            } finally {
+                document.title = DocumentTitleOriginal;
+            }
+        }
+        // Configuración del reconocimiento de voz
+        function configurarVoz() {
+            const Voice = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (Voice) {
+                recognition = new Voice();
+                recognition.lang = 'es-ES';
+                recognition.continuous = true;
+                recognition.interimResults = false;
+                const voiceButton = document.getElementById('voice-button');
+                // Eventos para mouse y pantalla táctil
+                voiceButton.addEventListener('mousedown', startRecording);
+                voiceButton.addEventListener('mouseup', stopRecording);
+                voiceButton.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    startRecording();
+                }, { passive: true });
+                voiceButton.addEventListener('touchend', stopRecording);
+                voiceButton.addEventListener('touchcancel', stopRecording);
+                recognition.onresult = (e) => {
+                    const transcript = e.results[0][0].transcript;
+                    procesarComandoVoz(transcript);
+                };
+                recognition.onerror = (e) => {
+                    if (e.error === 'no-speech') {
+                        leerEnVozAlta("No se detectó voz. Intenta nuevamente");
+                    }
+                    stopRecording();
+                };
+            } else {
+                alert("Tu navegador no soporta reconocimiento de voz. Intenta con Chrome o Edge.");
+            }
+        }
+        // Iniciar grabación
+        let isRecording = false;
+        let mediaRecorder;
+        let audioChunks = [];
+        let tempElements = [];
+        async function startRecording() {
+            const statusElement = document.createElement('div');
+            statusElement.className = 'chat-message status-message';
+            statusElement.textContent = '🔴 Grabando...';
+            document.getElementById('chat-history').style.opacity = '1';
+            document.getElementById('chat-history').style.filter = 'blur(0px)';
+            document.getElementById('chat-history').appendChild(statusElement);
+            document.getElementById('chat-history').scrollTop = document.getElementById('chat-history').scrollHeight;
+            tempElements.push(statusElement);
+            document.title = "Escuchandote...";
+            try {
+                window.speechSynthesis.cancel(); 
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                mediaRecorder.ondataavailable = (e) => {
+                    audioChunks.push(e.data);
+                };
+                mediaRecorder.onstop = async () => {
+                    document.title = "1/2 Procesando tu voz...";
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const formData = new FormData();
+                    formData.append('audio', audioBlob, 'recording.webm');
+                    try {
+                        const response = await fetch('/api/speech-to-text', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        const result = await response.json();
+                        document.title = "2/2 Generando una respuesta.";
+                        if (result.text)
+                            procesarComandoVoz(result.text);
+                        else
+                            leerEnVozAlta("Error: " + (result.error || "Reconocimiento fallido"));
+                    } catch (error) {
+                        console.error('Error:', error);
+                        leerEnVozAlta("Error al procesar el audio");
+                    }
+                    stream.getTracks().forEach(track => track.stop());
+                };
+                mediaRecorder.start();
+                document.getElementById('voice-button').classList.add('recording');
+                document.getElementById('voice-status').style.backgroundColor = '#ff4444';
+                document.getElementById('mic-indicator').textContent = '🔴';
+            } catch (error) {
+                console.error('Error accessing microphone:', error);
+                leerEnVozAlta("Permiso de micrófono requerido");
+            }
+        }
+        // Detener grabación
+        function stopRecording() {
+            const statusElement = document.createElement('div');
+            statusElement.className = 'chat-message status-message';
+            statusElement.textContent = '⏳ Procesando...';
+            tempElements.push(statusElement);
+            document.getElementById('chat-history').appendChild(statusElement);
+            document.getElementById('chat-history').scrollTop = document.getElementById('chat-history').scrollHeight;
+            document.title = DocumentTitleOriginal;
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+                document.getElementById('voice-button').classList.remove('recording');
+                document.getElementById('voice-status').style.backgroundColor = '#3fff45';
+                document.getElementById('mic-indicator').textContent = '🔵';
+            }
+        }
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configurar navegación
+            document.querySelectorAll('.option-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const screen = item.getAttribute('data-screen');
+                    showScreen(screen);
+                });
+            });
+            // Botón de volver
+            document.getElementById('back-button').addEventListener('click', () => {
+                showScreen('home');
+            });
+            document.getElementById('voice-button').addEventListener('mouseenter', () => {
+                document.getElementById('chat-history').style.opacity = '1';
+                document.getElementById('chat-history').style.filter = 'blur(0px)';
+                chatVisible = true;
+                clearTimeout(chatTimeout);
+            });
+            document.getElementById('voice-button').addEventListener('click', () => {
+                clearTimeout(chatTimeout);
+                chatVisible = true;
+            });
+            // Iniciar reloj
+            updateClock();
+            // Configurar reconocimiento de voz
+            configurarVoz();
+            // Mostrar pantalla inicial
+            showScreen('home');
+            // Add this in the initialization section
+            window.addEventListener('beforeunload', (event) => {
+                // Stop any ongoing speech
+                window.speechSynthesis.cancel(); 
+                // Optional: Stop any ongoing recording
+                if (mediaRecorder && mediaRecorder.state === 'recording')
+                    mediaRecorder.stop();
+                // Add pause on page hide
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'hidden') {
+                        window.speechSynthesis.pause();
+                    }
+                });
+            });
+            setTimeout(() => { procesarComandoVoz("Hola!.", true); }, 300);
+        });
+    </script>
+</body>
+</html>
